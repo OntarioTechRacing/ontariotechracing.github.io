@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+
+    <!-- Tab title. -->
+    <title>{{ page.title | default: site.title | default: "title" }}</title>
+
+    <!-- Link to GitHub's Primer CSS: https://primer.style/. -->
+    <link rel="stylesheet" href="https://unpkg.com/@primer/css/index.css">
+
+    <!-- Custom style sheet. -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- MathJax JavaScript with equation delimiter configuration. -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [["$", "$"]],  // Set inline delimiters.
+                displayMath: [["$$", "$$"]]  // Set display delimiters.
+            },
+            svg: {
+                fontCache: "global"
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div class="markdown-body" style="padding: 4ch; text-align:center;">
+        <img src="../assets/img/otr_logo_grey.png"
+             style="height: 10ch; display: block; margin: auto;"
+             alt="otr_logo_grey">
+        <a href="https://ontariotechracing.github.io/">
+            OntarioTechRacing.github.io
+        </a>
+    </div>
+</header>
+
+<main>
+    <div class="markdown-body" style="padding: 4ch;">
+        {{ content }}
+    </div>
+</main>
+
+<footer>
+    <div class="markdown-body" style="padding: 4ch; text-align:center;">
+        <p>
+            {{ site.time | date: '%Y-%m-%d' }}
+        </p>
+    </div>
+</footer>
+
+</body>
+
+</html>
