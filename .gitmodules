@@ -1,0 +1,3 @@
+[submodule "embedded"]
+	path = embedded
+	url = https://github.com/OntarioTechRacing/embedded
