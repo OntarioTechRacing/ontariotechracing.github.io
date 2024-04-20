@@ -31,6 +31,19 @@
     </script>
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- JavaScript redirect handling for markdown header redirects. -->
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            var hash = window.location.hash;
+            if (hash) {
+                var target = document.getElementById(hash.slice(1));
+                if (target) {
+                    target.scrollIntoView();
+                }
+            }
+        });
+    </script>
 </head>
 
 <body>
