@@ -103,7 +103,9 @@
                     }
                 });
 
-                // Append the extracted and formatted content into the header of the page.
+                // Append the details element with all contents to the div, then to the header.
+                contentHtml.appendChild(details);
+
                 const header = document.querySelector("header");
                 if (header) {
                     header.appendChild(contentHtml);
