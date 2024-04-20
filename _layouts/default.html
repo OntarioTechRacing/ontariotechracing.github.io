@@ -56,22 +56,22 @@
         document.addEventListener("DOMContentLoaded", function () {
             const baseUrl = "https://ontariotechracing.github.io";
 
-            // Extract path segments from the current URL, excluding the base part and file name
+            // Extract path segments from the current URL, excluding the base part and file name.
             const pathSegments = window.location.pathname.replace("/index.html", "").split("/").filter(segment => segment);
 
             let currentPath = baseUrl;
             const fetchPromises = [];
 
-            // Prepare fetch promises for each segment path
+            // Prepare fetch promises for each segment path.
             pathSegments.forEach((segment, index) => {
                 currentPath += "/" + segment;
                 fetchPromises.push(fetch(currentPath + "/index.html").then(response => response.text()));
             });
 
             Promise.all(fetchPromises).then(pages => {
-                let contentHtml = "";
+                let contentHtml = document.createElement("div"); // Container for nested lists.
 
-                // Process each page"s HTML content
+                // Process each page's HTML content.
                 pages.forEach((pageHtml, index) => {
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(pageHtml, "text/html");
@@ -79,24 +79,27 @@
                     const ul = h2 && h2.nextElementSibling.tagName === "UL" ? h2.nextElementSibling : null;
 
                     if (ul) {
-                        // Create indents based on the depth of the URL, starting from the first segment after the base URL
-                        let indent = "";
+                        // Create nested ul based on index.
+                        let nestedContainer = contentHtml;
                         for (let i = 0; i < index; i++) {
-                            indent += "<ul>";
+                            if (!nestedContainer.lastElementChild || nestedContainer.lastElementChild.tagName !== "UL") {
+                                let newUl = document.createElement("ul");
+                                nestedContainer.appendChild(newUl);
+                                nestedContainer = newUl;
+                            } else {
+                                nestedContainer = nestedContainer.lastElementChild;
+                            }
                         }
 
-                        // Append the HTML with appropriate indentation
-                        contentHtml += `${indent}<li>${ul.outerHTML}</li>`;
-                        for (let i = 0; i < index; i++) {
-                            contentHtml += "</ul>";
-                        }
+                        // Append the ul to the correct depth.
+                        nestedContainer.appendChild(ul.cloneNode(true)); // Clone to append the entire ul structure.
                     }
                 });
 
-                // Append the extracted and formatted content into the header of the page
+                // Append the extracted and formatted content into the header of the page.
                 const header = document.querySelector("header");
                 if (header) {
-                    header.innerHTML += `<ul>${contentHtml}</ul>`;
+                    header.appendChild(contentHtml);
                 }
             }).catch(error => {
                 console.error("Failed to fetch or parse page:", error);
