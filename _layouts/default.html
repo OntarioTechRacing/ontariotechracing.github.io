@@ -117,6 +117,28 @@
         });
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPath = window.location.pathname;
+            const firstSegment = currentPath.split("/")[1];
+
+            // Only modify links if there is a first segment, and we are not at its root.
+            if (firstSegment && currentPath !== "/" + firstSegment) {
+                const prefix = "/" + firstSegment;
+                const links = document.querySelectorAll("a");
+
+                links.forEach(link => {
+                    const href = link.getAttribute("href");
+                    // Modify href if it's a relative path that doesn't start with "//".
+                    if (href.startsWith("/") && !href.startsWith("//")) {
+                        const newHref = href.replace(/^\/(?!\/)/, `${prefix}/`);
+                        link.setAttribute("href", newHref);
+                    }
+                });
+            }
+        });
+    </script>
+
 </head>
 
 <body>
