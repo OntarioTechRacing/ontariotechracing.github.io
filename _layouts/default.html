@@ -71,6 +71,7 @@
             Promise.all(fetchPromises).then(pages => {
                 let contentHtml = document.createElement("div"); // Container for nested lists.
                 contentHtml.style.padding = "4ch"; // Set padding of 4ch.
+                contentHtml.className = "markdown-body";
 
                 // Wrap in details dropdown.
                 let details = document.createElement("details");
