@@ -16,4 +16,6 @@
 
 ### 1.1 Embedded Software
 
+[welcome_to_es](welcome_to_es)
+
 [embedded](embedded)

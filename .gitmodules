@@ -1,3 +1,6 @@
 [submodule "embedded"]
 	path = embedded
 	url = https://github.com/OntarioTechRacing/embedded
+[submodule "welcome_to_es"]
+	path = welcome_to_es
+	url = https://github.com/OntarioTechRacing/welcome_to_es
