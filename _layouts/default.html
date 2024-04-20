@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width initial-scale=1.0">
 
     <!-- Add favicon. -->
-    <link rel="icon" href="/assets/img/otr_logo_grey-512x512.png" type="image/png">
+    <link rel="icon" href="/assets/img/otr_logo_grey-512x512.png"
+          type="image/png">
 
     <!-- Tab title. -->
     <title>{{ page.title | default: site.title | default: "title" }}</title>
@@ -33,13 +34,26 @@
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- JavaScript redirect handling for markdown header redirects. -->
-    <script defer>
+    <!--
+        Listen for DOMContentLoaded: This ensures that the script only runs after the entire HTML document has been loaded.
+        Get the Hash: Extract the hash part from the URL.
+        Process the Hash:
+            The `.replace(/^\d+/, '')` removes any digits at the beginning of the hash.
+            The `.replace(/^-/, '')` removes a hyphen immediately following the digits.
+        Scroll to Element: The script then searches for an element with the modified id and scrolls to it if found.
+    -->
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             var hash = window.location.hash;
             if (hash) {
-                var target = document.getElementById(hash.slice(1));
+                var processedHash = hash.slice(1)
+                    .replace(/^\d+/, '')
+                    .replace(/^-/, '');
+                var target = document.getElementById(processedHash);
                 if (target) {
                     target.scrollIntoView();
+                } else {
+                    console.log("Element not found for hash: " + processedHash);
                 }
             }
         });
