@@ -33,14 +33,12 @@
     <script id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- JavaScript redirect handling for markdown header redirects. -->
-    <!--
-        Event Listener for DOMContentLoaded: Ensures the script runs only after the entire document is loaded.
-        Select Specific Links: It uses querySelectorAll with a[href^="#"] to select only those <a> tags whose href attributes start exactly with a #.
-        Modify Each Link: For each selected link, the script removes digits that directly follow the # and are immediately followed by a hyphen.
-        Update Each Link's href: It then updates the href attribute with the modified anchor link.
-    -->
     <script defer>
+        // JavaScript redirect handling for markdown header redirects.
+        //  Event Listener for DOMContentLoaded: Ensures the script runs only after the entire document is loaded.
+        //  Select Specific Links: It uses querySelectorAll with a[href^="#"] to select only those <a> tags whose href attributes start exactly with a #.
+        //  Modify Each Link: For each selected link, the script removes digits that directly follow the # and are immediately followed by a hyphen.
+        //  Update Each Link's href: It then updates the href attribute with the modified anchor link.
         document.addEventListener("DOMContentLoaded", function () {
             var links = document.querySelectorAll("a[href^='#']");
             links.forEach(function (link) {
@@ -49,10 +47,8 @@
                 link.setAttribute("href", modifiedHref);
             });
         });
-    </script>
 
-    <!-- Base URL segment injection for hrefs. -->
-    <script defer>
+        // Base URL segment injection for hrefs.
         document.addEventListener("DOMContentLoaded", function () {
             const currentPath = window.location.pathname;
             const firstSegment = currentPath.split("/")[1];
@@ -72,10 +68,8 @@
                 });
             }
         });
-    </script>
 
-    <!-- JavaScript running table of contents. -->
-    <script defer>
+        // JavaScript running table of contents.
         document.addEventListener("DOMContentLoaded", function () {
             const baseUrl = "https://ontariotechracing.github.io";
 
