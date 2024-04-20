@@ -87,7 +87,7 @@
 
                     if (ul) {
                         // Create nested ul based on index.
-                        let nestedContainer = contentHtml;
+                        let nestedContainer = details;
                         for (let i = 0; i < index; i++) {
                             if (!nestedContainer.lastElementChild || nestedContainer.lastElementChild.tagName !== "UL") {
                                 let newUl = document.createElement("ul");
