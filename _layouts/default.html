@@ -73,6 +73,11 @@
                 contentHtml.style.padding = "4ch"; // Set padding of 4ch.
                 contentHtml.className = "markdown-body";
 
+                contentHtml.style.width = "80%"; // Set width to 80% of its container.
+                contentHtml.style.marginLeft = "auto"; // Automatically adjust left margin.
+                contentHtml.style.marginRight = "auto"; // Automatically adjust right margin.
+                contentHtml.style.textAlign = "center"; // Center-align text and inline(-block) elements inside.
+
                 // Wrap in details dropdown.
                 let details = document.createElement("details");
                 let summary = document.createElement("summary");
