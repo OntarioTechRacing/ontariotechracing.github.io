@@ -42,11 +42,11 @@
     -->
     <script defer>
         document.addEventListener("DOMContentLoaded", function () {
-            var links = document.querySelectorAll('a[href^="#"]');
+            var links = document.querySelectorAll("a[href^='#']");
             links.forEach(function (link) {
-                var originalHref = link.getAttribute('href');
-                var modifiedHref = originalHref.replace(/^#(\d+)-/, '#');
-                link.setAttribute('href', modifiedHref);
+                var originalHref = link.getAttribute("href");
+                var modifiedHref = originalHref.replace(/^#(\d+)-/, "#");
+                link.setAttribute("href", modifiedHref);
             });
         });
     </script>
@@ -70,18 +70,13 @@
 
             Promise.all(fetchPromises).then(pages => {
                 let contentHtml = document.createElement("div"); // Container for nested lists.
+                contentHtml.className = "markdown-body"; // Set class to "markdown-body".
                 contentHtml.style.padding = "4ch"; // Set padding of 4ch.
-                contentHtml.className = "markdown-body";
-
-                contentHtml.style.width = "80%"; // Set width to 80% of its container.
-                contentHtml.style.marginLeft = "auto"; // Automatically adjust left margin.
-                contentHtml.style.marginRight = "auto"; // Automatically adjust right margin.
-                contentHtml.style.textAlign = "center"; // Center-align text and inline(-block) elements inside.
 
                 // Wrap in details dropdown.
                 let details = document.createElement("details");
                 let summary = document.createElement("summary");
-                summary.textContent = "Table of Contents";
+                summary.textContent = "<strong>Path</strong>";
                 details.appendChild(summary);
 
                 // Process each page's HTML content.
@@ -146,7 +141,7 @@
 <footer>
     <div class="markdown-body" style="padding: 4ch; text-align:center;">
         <p>
-            {{ site.time | date: '%Y-%m-%d' }}
+            {{ site.time | date: "%Y-%m-%d" }}
         </p>
     </div>
 </footer>
