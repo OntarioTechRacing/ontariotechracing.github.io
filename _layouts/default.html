@@ -70,6 +70,13 @@
 
             Promise.all(fetchPromises).then(pages => {
                 let contentHtml = document.createElement("div"); // Container for nested lists.
+                contentHtml.style.padding = "4ch"; // Set padding of 4ch.
+
+                // Wrap in details dropdown.
+                let details = document.createElement("details");
+                let summary = document.createElement("summary");
+                summary.textContent = "Table of Contents";
+                details.appendChild(summary);
 
                 // Process each page's HTML content.
                 pages.forEach((pageHtml, index) => {
