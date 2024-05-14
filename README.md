@@ -22,7 +22,7 @@ to our team. It encompasses everything from learnings from FSAE-related projects
 to internal training documents and guidelines.
 
 The original GitHub pages repository can be found
-at [ontariotechracing.github.io](https://github.com/OntarioTechRacing/ontariotechracing.github.io).
+at [github.com/OntarioTechRacing/ontariotechracing.github.io](https://github.com/OntarioTechRacing/ontariotechracing.github.io).
 
 A significant portion of this GitHub pages repository integrates documentation
 through submodules. This approach helps maintain organization and ensures clear
