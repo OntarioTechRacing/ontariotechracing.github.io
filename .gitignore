@@ -1,5 +1,8 @@
 ################################################################################
-# (Additional) Ontario Tech Racing Dev Environments
+# devenv.gitignore
+# Base commit hash: 95328c5
+#
+# General Dev Environments
 ################################################################################
 
 # JetBrains IDEs
@@ -7,7 +10,10 @@
 .idea/
 
 ################################################################################
-# macOS .gitignore
+# macos.gitignore
+# Base commit hash: 95328c5
+#
+# macOS gitignore
 # Based on: https://github.com/github/gitignore/blob/main/Global/macOS.gitignore
 ################################################################################
 
